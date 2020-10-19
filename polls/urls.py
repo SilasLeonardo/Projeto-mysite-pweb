@@ -4,10 +4,9 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('', views.sobre, name='sobre'),
+    path('<int:question_id>', views.detail, name='detail'),
+    path('<int:question_id>/result', views.mvotos, name='mvotos'),
+
 ]
 
-from . import sobre
-
-urlpatterns = [
-    path('', sobre.index, name='index'),
-]
