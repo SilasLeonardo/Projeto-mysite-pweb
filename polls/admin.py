@@ -38,15 +38,15 @@ class QuestionAdmin(admin.ModelAdmin):
            question.is_public = True
            question.save()
 
-   public_question.short_description = "Publicar a Question"
+   public_question.short_description = "Publicar a Questão"
 
 
    def unpublish(self, request, queryset):
        for question in queryset:
            question.is_public = False
-           question.save()
+           question.delete()
 
-   unpublish.short_description = "Despublica a Question"
+   unpublish.short_description = "Despublicar a Questão"
 
 
 

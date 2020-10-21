@@ -1,45 +1,148 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>polls detail</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Polls Votos</title>
+
+  <!--<title>OnePage Bootstrap Template - Index</title>-->
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+  <!-- Favicons -->
+    <link href={% static "polls/img/favicon.png" %} rel="icon">
+    <link href={%  static "polls/img/apple-touch-icon.png" %} rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+    <link href={%  static "polls/bootstrap/css/bootstrap.min.css" %} rel="stylesheet">
+    <link href={%  static "polls/icofont/icofont.min.css" %} rel="stylesheet">
+    <link href={%  static "polls/boxicons/css/boxicons.min.css" %} rel="stylesheet">
+    <link href={%  static "polls/remixicon/remixicon.css" %} rel="stylesheet">
+    <link href={%  static "polls/venobox/venobox.css" %} rel="stylesheet">
+    <link href={%  static "polls/owl.carousel/assets/owl.carousel.min.css" %} rel="stylesheet">
+    <link href={%  static "polls/aos/aos.css" %} rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+    <link href={% static "polls/css/style.css" %} rel="stylesheet">
 </head>
 <body>
+<!--
     <h1>{{ question.question_text }}</h1>
     <h3>Com número de votos!</h3>
 <table>
     <tr>
         <td>
             <form action="{% url 'votemm' question.id %}" method="post">{% csrf_token %}
-
                 <ul>
                     {% for choice in question.choice_set.all %}
                         <li><input type="radio" name="choice" value="{{ choice.id }}">Choices: {{ choice.choice_text }}</li>
                     {% endfor %}
-
                 </ul>
                 <input type="submit" value="Votar">
            </form>
         </td>
-
         <td>
-
             <ul>
                 {% for choice in question.choice_set.all %}
-
                  <li>Número de votos: {{ choice.votes }}</li>
-
                 {% endfor %}
-
             </ul>
-
         </td>
     </tr>
-
-
 </table>
 
-
     <a href="{% url 'index' %}">Voltar</a>
+-->
+
+<!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a>Questionario PWeb</a></h1>
+
+      <nav class="nav-menu d-none d-lg-block">
+
+      </nav><!-- .nav-menu -->
+
+      <!-- <a href="#about" class="get-started-btn scrollto">Get Started</a> -->
+    </div>
+  </header>
+<!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-9 text-center">
+          <h1>Página de Resultados</h1>
+          <h2>Com Números de Votos Abaixo</h2>
+        </div>
+      </div>
+      <div class="text-center">
+        <!-- <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+      </div>
+
+      <div class="row icon-boxes">
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-7">
+          <div class="icon-box">
+            <div class="icon"><i class="ri-stack-line"></i></div>
+            <h4 class="title"><a> {{ question.question_text }} <h6>Com número de votos:</h6></a></h4>
+              <p class="description">
+                  <table>
+                    <tr>
+                        <td>
+                            <form action="{% url 'votemm' question.id %}" method="post">{% csrf_token %}
+                                <ul>
+                                    {% for choice in question.choice_set.all %}
+                                        <li><input type="radio" name="choice" value="{{ choice.id }}">{{ choice.choice_text }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <input type="submit" value="Votar">
+                           </form>
+                        </td>
+                        <td>
+                            <ul>
+                                {% for choice in question.choice_set.all %}
+                                 <li>Nº de votos:{{ choice.votes }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                <a href="{% url 'index' %}">Voltar</a>
+              </p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src={% static "polls/jquery/jquery.min.js" %}></script>
+  <script src={% static "polls/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+  <script src={% static "polls/jquery.easing/jquery.easing.min.js" %}></script>
+  <script src={% static "polls/php-email-form/validate.js" %}></script>
+  <script src={% static "polls/waypoints/jquery.waypoints.min.js" %}></script>
+  <script src={% static "polls/counterup/counterup.min.js" %}></script>
+  <script src={% static "polls/venobox/venobox.min.js" %}></script>
+  <script src={% static "polls/owl.carousel/owl.carousel.min.js" %}></script>
+  <script src={% static "polls/isotope-layout/isotope.pkgd.min.js" %}></script>
+  <script src={% static "polls/aos/aos.js" %}></script>
+
+  <!-- Template Main JS File -->
+  <script src={% static "polls/js/main.js" %}></script>
 </body>
 </html>
